@@ -1,0 +1,5 @@
+//Freestyle job in Jenkins
+--------------------------
+mkdir la_market
+touch file1.txt
+echo "hello Jenkins Team!" >> file1.txt
