@@ -1,0 +1,88 @@
+SlackUp Jenkins
+
+Description
+To create a Slack channel to receive Jenkins build notifications and use it to invoke Jenkins jobs remotely by configuring the slash commands in Slack.
+Real-time scenario: You are a DevOps Engineer at La' Market that recently adopted a microservices-based architecture for its flagship web application. Different development teams manage the respective functionalities of the application. To improve the efficiency of deploying updates and manage releases, the company has decided to enable developers to trigger Jenkins jobs directly from their Slack channels once the build is completed and the team's channel is notified on Slack. You are tasked with implementing Slack integration in Jenkins to remotely invoke Jenkins jobs from a Slack channel, facilitating automated deployment processes and enabling real-time updates and team collaboration.
+Write-up:
+At SlackUp Jenkins, to set up a Slack channel for receiving real-time Jenkins build notifications and configure Slack slash commands to remotely trigger Jenkins jobs. Slack is a collaboration tool that boost software development so as DevOps Engineer to streamline communication, knowledge sharing and integrations with developer tools I setup a project slack with Jenkins. To get notification from other team and developer updates. First, I will sign up/log in into Slack Account and creating new channel for updates and notifications for the teams. After, that I can integrate the Jenkins with it. So that team can communicate with each other and work should be done faster.
+Pre-requisites: Jenkins pre-installed, A Slack account
+
+Steps:  Slack Setup
+1. Create a slack workspace and a slack channel
+
+1.	Go to: https://app.slack.com/
+2.	Enter you email id on the first page
+3.	Enter the confirmation code 
+4.	Press continue
+5.	Click on Create Workspace: -
+o	Add company Name - La' Market
+o	User Name – Sushant Bhagat
+o	Add number of people in Team working on – Jenkins integration
+
+2. Create a new channel that will be used to receive and trigger Jenkins jobs
+
+3. Add Jenkin Ci tool to the Slack
+	Click on the channel drop down which is in the middle of the page
+ 
+	Click on Integrations → Click on add an App
+	Search for Jenkins → Click on install
+	Click Add on Slack
+	Choose the channel created in step 2
+
+	Add Jenkins Integration
+	Copy the team domain name and token details
+	On the next page, scroll to step 3 and note down the below details:
+	Note Team subdomain &
+	Integration Token Credential ID
+Install slack notification plugin on Jenkins:
+Manage Jenkins → plugins → available plugins → slack notification → click on install button
+ 
+Install Generic Webhook Trigger
+ 
+Setup slack on Jenkins:
+Manage Jenkins → System -> Search for slack
+	In workspace add the subdomain name that we have copied from slack app directory(step3)
+	Create credentials to setup slack token
+	Credential’s kind = secret text
+	Go back to Dashboard
+	Create a Freestyle project
+ 
+	Choose the new freestyle project or an already created one
+	Go to configure section 
+	Go to Post-build actions
+	Add Slack Notification 
+	Choose he events desired to be notified 
+	 Build the job and see the slack channel for notification
+	See the notification in slack. The Jenkins successfully integrated.
+
+	Custom Slack Notification 
+
+	Create a New pipeline job to test if the integration works with Slack notifications.
+
+Jenkins build notifications via Slack
+	Select a Jenkins job and create a trigger to run a Jenkins job from a remote server.
+Jenkins Job→ configure→ Build triggers -> Select the trigger -> Trigger builds remotely (e.g., from scripts)
+	Construct the URL based on the token given
+	Need to give Jenkins URL public IP
+	http://192.168.1.34:8080/job/La-Mkt/build?token=token1234 or /buildWithParameters?token=TOKEN_NAME
+	Manage Jenkins → Security-> Select Allow anonymous read access and save it.
+	Now create slash command in slack
+	Go to the slack – channel – integration – add app – search “Slash Commands” – Install it 
+	Click on Add to Slack
+	Now choose a command
+	Note: command starts with /
+	Command will not have a space
+
+
+	On the next page we have to add Jenkins URL details
+	Scroll down and enter Integration settings
+	Save the integration
+	The generic webhook trigger – we need to add – add Jenkins – secret text – copy the token above shown – save – then select credential to add
+
+ 
+GO to slack dashboard, and use slack to trigger Jenkins job
+Conclusion:
+The integration of Jenkins with Slack through the setup of notification channels and slash commands significantly enhances the deployment process. 
+By enabling developers to trigger and monitor Jenkins builds directly from Slack, La' Market ensures that the development teams can respond swiftly to changes and maintain 
+continuous delivery with high efficiency. This setup not only minimizes the gap between code development and deployment but also fosters a collaborative environment where updates 
+and issues can be addressed in real-time, leading to a more agile and responsive development process
