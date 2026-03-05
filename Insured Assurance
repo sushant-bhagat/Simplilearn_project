@@ -1,0 +1,31 @@
+PG DO: DevOps Foundations: Version Control and CI/CD with Jenkins
+
+To create a GitHub Actions CI/CD pipeline workflow for invoking the deployment of a Java application
+as a Jenkins job using Tomcat Apache
+Insured Assurance, a leading global insurance provider based in the US, offers a range of products
+including home, health, car, and life insurance. The company is transitioning to a DevOps architecture
+and aims to automate code builds and deployments across various environments. To meet this need,
+it has adopted GitHub Actions for code checkout, building, and testing automation and Jenkins for
+continuous deployment. As a DevOps engineer at Insured Assurance, you are tasked with
+implementing a CI/CD pipeline using GitHub Actions and Jenkins.
+The following tasks outline the process of implementing CI/CD using GitHub Actions and Jenkins:
+
+1. Create a code repository on GitHub
+2. Create a GitHub Actions pipeline to perform continuous integration
+3. Configure Tomcat Apache for automated code deployment
+4. Integrate the GitHub Actions pipeline to invoke the Jenkins pipeline
+5. Invoke pipeline to validate automated deployment
+
+Write-up:
+At Insured Assurance, I was tasked with setting up a CI/CD pipeline to automate the deployment of a
+Java application as part of the company’s DevOps transition. 
+I created a GitHub repository for the Java application's source code and set up a GitHub Actions
+workflow to handle continuous integration (CI). This workflow automated code checkout, build
+processes using GitHub. To link GitHub with Jenkins, I configured a webhook to trigger a
+Jenkins freestyle job upon code pushes to the repository.
+The GitHub Action was responsible for continuous deployment (CD), deploying the built WAR file to the
+Tomcat server. This setup ensured that Jenkins could download the artifact and initiate the deployment
+process on Tomcat automatically. By integrating infrastructure with GitHub Actions and Jenkins,
+I successfully automated the deployment pipeline, overcoming the constraints of my initial lab
+environment and achieving a streamlined, efficient DevOps workflow.
+Pre-requisites: GitHub Account
